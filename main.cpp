@@ -1,11 +1,22 @@
 #include <iostream>
-#include "includes/Card.h"
+#include <vector>
+#include "includes/Deck.h"
 
+using std::cout;
 
 int main(){
 
-    Card card2(6, 'S');
+    Deck deck;
+    Deck player1_hand;
+    Deck player2_hand;
+    Deck player1_won_pile;
+    Deck player2_won_pile;
+    Deck battleground;
 
-    std::cout << card2.getSuit() << "\n";
+    deck.shuffle();
 
+    std::tie(player1_hand, player2_hand) = deck.cut(deck.size()/2);
+
+
+    return 0;
 }
