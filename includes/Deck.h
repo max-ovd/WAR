@@ -8,6 +8,7 @@ class Deck{
     public:
         // Constructors
         Deck();
+        Deck(int n);
         Deck(std::vector<int> deck);
 
         // Methods
@@ -20,7 +21,7 @@ class Deck{
         std::vector<int> pop(int n);
         void add(int x);
         void add(Deck x);
-        Deck clear();
+        void clear();
         auto begin() -> std::vector<int>::iterator;
         auto end() -> std::vector<int>::iterator;               
 };

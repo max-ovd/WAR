@@ -2,14 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug WAR",
-            "type": "cppvsdbg",  // Use MSVC debugger on Windows
+            "name": "Debug C++ file",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/WAR.exe",  // Point to WAR.exe instead of a.exe
+            "program": "${workspaceFolder}/WAR.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "externalConsole": true  // Optional: Set to true if you want a separate console window
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build C++ file",
+            "miDebuggerPath": "gdb"
         }
     ]
 }

@@ -2,11 +2,15 @@
 #include <vector>
 #include <algorithm>
 #include <random>
-#include "deck.h"
+#include "Deck.h"
 
             
 Deck::Deck(){
-    for (int i = 1; i <= 14; i++) {
+    this->deck = std::vector<int> {};
+}
+
+Deck::Deck(int n){
+    for (int i = 1; i <= n; i++) {
         for (int j = 0; j < 4; j++) {
             this->deck.push_back(i);
         }
@@ -62,6 +66,9 @@ std::vector<int> Deck::pop(int n) {
     std::vector<int> output;
 
     for (int i = 0; i < n; i++) {
+        if (deck.size() <= 1) {
+            return output;
+        }
         output.push_back(deck.front());
         deck.erase(deck.begin());
     }
@@ -85,6 +92,6 @@ auto Deck::end() -> std::vector<int>::iterator{
     return deck.end();
 }
 
-Deck Deck::clear(){
-    return Deck(std::vector<int> {});
+void Deck::clear(){
+    deck.clear();
 }
