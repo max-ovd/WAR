@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug WAR",
+            "type": "cppvsdbg",  // Use MSVC debugger on Windows
+            "request": "launch",
+            "program": "${workspaceFolder}/WAR.exe",  // Point to WAR.exe instead of a.exe
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": true  // Optional: Set to true if you want a separate console window
+        }
+    ]
+}
