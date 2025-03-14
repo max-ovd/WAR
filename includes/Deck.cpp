@@ -21,13 +21,12 @@ Deck::Deck(std::vector<int> deck) {
     this->deck = deck;
 }
 
-Deck Deck::shuffle(){
+Deck& Deck::shuffle(){
     std::random_device rd;
     std::mt19937 g(rd());
-
     std::shuffle(deck.begin(), deck.end(), g);
 
-    return deck;
+    return *this;
 }
 
 int Deck::size(){
@@ -49,10 +48,19 @@ std::pair<Deck, Deck> Deck::cut(const int N){
         throw std::out_of_range("Cut index is out of bounds.");
     }
 
-    Deck v1(std::vector<int>(deck.begin(), deck.begin() + N));
-    Deck v2(std::vector<int>(deck.begin() + N, deck.end()));
-
-    return std::pair<Deck, Deck> {v1, v2}; 
+    return {
+        Deck(
+            std::vector<int>(
+                std::make_move_iterator(deck.begin()),
+                std::make_move_iterator(deck.begin()+ N)
+            )
+        ),
+        Deck(
+            std::vector<int>(
+                std::make_move_iterator(deck.begin()+N), 
+                std::make_move_iterator(deck.end()))
+        )
+    };
 }
 
 int Deck::pop(){
@@ -80,8 +88,8 @@ void Deck::add(int x){
     deck.insert(deck.end(), x);
 }
 
-void Deck::add(Deck x) {
-    deck.insert(deck.end(), x.begin(), x.end());
+void Deck::add(const Deck& x) {
+    deck.insert(deck.end(), x.deck.begin(), x.deck.end());
 }
 
 auto Deck::begin() -> std::vector<int>::iterator { // undestand this line

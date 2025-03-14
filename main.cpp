@@ -77,8 +77,6 @@ int main(){
             battle_hand.add(player1_hand.pop(2));
             battle_hand.add(player2_hand.pop(2));
         }
-        
-        
     }
 
     cout << rounds;

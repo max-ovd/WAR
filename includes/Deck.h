@@ -12,7 +12,7 @@ class Deck{
         Deck(std::vector<int> deck);
 
         // Methods
-        Deck shuffle();
+        Deck& shuffle();
         void print_cards();
         int size();
         bool isEmpty();
@@ -20,7 +20,7 @@ class Deck{
         int pop();
         std::vector<int> pop(int n);
         void add(int x);
-        void add(Deck x);
+        void add(const Deck& x);
         void clear();
         auto begin() -> std::vector<int>::iterator;
         auto end() -> std::vector<int>::iterator;               
